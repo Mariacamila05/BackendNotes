@@ -17,6 +17,8 @@ const app = async ()=> {
     }),
   );
 
+  logger.log(`Conectado a la base de datos por el puerto ${process.env.POSTGRES_PORT}`)
+
   await app.listen(process.env.PORT || 3001);
   logger.log(`🚀 Application is running on port: ${process.env.PORT || 3001}`);
 }
