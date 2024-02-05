@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NotesModule } from './notes/notes.module';
+import { TlsOptions } from 'tls';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { NotesModule } from './notes/notes.module';
       database: process.env.POSTGRES_DB,
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      ssl:false,
+      ssl:process.env.SSL as boolean | TlsOptions,
       autoLoadEntities: true,
       synchronize: true,
     }),
