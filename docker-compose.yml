@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  database:
+    image: postgres:10-alpine
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - target: 5432
+        host_ip: 127.0.0.1
+        published: ${POSTGRES_PORT}
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./db_data:/var/lib/postgresql/data

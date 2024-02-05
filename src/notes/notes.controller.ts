@@ -5,38 +5,35 @@ import { User } from 'src/auth/entities';
 import { CreateNoteDto } from './dto';
 
 @Controller('notes')
+@Auth()
 export class NotesController {
 
     constructor(
         private readonly notesService: NotesService,
     ) { }
 
-    @Get('/')
+    @Get()
     @Auth()
     findAll(@GetUser() user: User) {
         return this.notesService.findAll(user.id);
     }
 
     @Get(':id')
-    @Auth()
     findOne(@Param('id') id: string) {
         return this.notesService.findOne(id);
     }
 
-    @Post('/')
-    @Auth()
+    @Post()
     create(@Body() createNoteDto: CreateNoteDto, @GetUser() user: User) {
         return this.notesService.create(createNoteDto, user.id);
     }
 
     @Patch(':id')
-    @Auth()
     update(@Param('id') id: string, @Body() updateNoteDto: CreateNoteDto) {
         return this.notesService.update(id, updateNoteDto);
     }
 
     @Delete(':id')
-    @Auth()
     remove(@Param('id') id: string) {
         return this.notesService.remove(id);
     }
