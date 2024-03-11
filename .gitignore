@@ -40,3 +40,6 @@ lerna-debug.log*
 package-lock.json
 
 /db_data
+
+
+/.scannerwork
