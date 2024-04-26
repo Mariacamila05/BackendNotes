@@ -17,7 +17,7 @@ import { TlsOptions } from 'tls';
       database: process.env.POSTGRES_DB,
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      ssl: false,
+      ssl: true,
       autoLoadEntities: true,
       synchronize: true,
     }),
